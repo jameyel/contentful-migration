@@ -1,6 +1,6 @@
 {
-  "name": "contentful-migration",
-  "version": "0.0.0-development",
+  "name": "@everlywell/contentful-migration",
+  "version": "0.0.1",
   "description": "Migration tooling for contentful",
   "author": "Contentful GmbH",
   "license": "MIT",

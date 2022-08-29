@@ -32,7 +32,9 @@ class EntryTransformToTypeAction extends APIAction {
     const locales: string[] = await api.getLocalesForSpace()
 
     for (const entry of entries) {
-      const inputs = this.fromFields ? _.pick(entry.fields, this.fromFields) : entry.fields
+      const inputs = this.fromFields
+        ? _.pick({ fromId: entry.id, ...entry.fields }, this.fromFields)
+        : entry.fields
       const newEntryId = await this.identityKey(inputs)
       const hasEntry = await api.hasEntry(newEntryId)
 
