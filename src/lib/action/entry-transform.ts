@@ -28,7 +28,9 @@ class EntryTransformAction extends APIAction {
     const entries: Entry[] = await api.getEntriesForContentType(this.contentTypeId)
     const locales: string[] = await api.getLocalesForSpace()
     for (const entry of entries) {
-      const inputs = _.pick({ fromId: entry.id, ...entry.fields }, this.fromFields)
+      const inputs = this.fromFields
+        ? _.pick({ fromId: entry.id, ...entry.fields }, this.fromFields)
+        : entry.fields
       let changesForThisEntry = false
       for (const locale of locales) {
         let outputsForCurrentLocale
