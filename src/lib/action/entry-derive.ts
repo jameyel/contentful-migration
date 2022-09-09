@@ -36,7 +36,7 @@ class EntryDeriveAction extends APIAction {
     const sourceContentType: ContentType = await api.getContentType(this.contentTypeId)
 
     for (const entry of entries) {
-      const inputs = _.pick(entry.fields, this.fromFields)
+      const inputs = _.pick({ fromId: entry.id, ...entry.fields }, this.fromFields)
       const newEntryId = await this.identityKey(inputs)
       const hasEntry = await api.hasEntry(newEntryId)
 
