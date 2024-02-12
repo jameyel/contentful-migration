@@ -170,7 +170,7 @@ const checks = {
     const transformation = intent.toRaw().payload.transformation
 
     const nonExistingSourceFields = transformation.from.filter(
-      (f) => !validationContext.fieldSet.has(f)
+      (f) => f !== 'fromId' && !validationContext.fieldSet.has(f)
     )
     const nonExistingDestinationFields = transformation.to.filter(
       (f) => !validationContext.fieldSet.has(f)
